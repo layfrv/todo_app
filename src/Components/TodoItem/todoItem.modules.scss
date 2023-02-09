@@ -1,11 +1,88 @@
-.todoItem {
+.todo-item {
   display: flex;
+  position: relative;
   justify-content: space-between;
-  align-items: flex-start;
-  background-color: #262626;
+  align-content: center;
+  align-self: auto;
+  background-color: #222222;
   width: 720px;
-  height: auto;
+  height: fit-content;
   padding: 16px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   border-radius: 8px;
+
+  &-btn {
+    display: flex;
+    cursor: pointer;
+    background-color: #222222;
+
+    div:hover {
+      transition: all 0.2s ease-in-out;
+      transform: scale(1.05);
+    }
+
+    &_p {
+      color: white;
+      font-size: 18px;
+      text-align: left;
+      overflow-y: auto;
+      padding-top: 3px;
+      cursor: default;
+
+      &-completed {
+        color: #52525b;
+        text-decoration: line-through;
+      }
+    }
+  }
+
+  &:hover {
+    background-color: #262626;
+    cursor: grab;
+  }
+
+  &-button-items {
+    margin-left: 10px;
+    flex-shrink: 0;
+    background-color: inherit;
+
+    .edit-icon,
+    .delete-icon {
+      flex-grow: 1;
+      margin-left: 10px;
+      background-color: #222222;
+
+      &-svg {
+        color: #7c3aed;
+        margin-left: 5px;
+        font-size: 30px;
+      }
+    }
+  }
+
+  .edit-input {
+    color: white;
+    font-size: 20px;
+    box-sizing: border-box;
+    width: 400px;
+    height: 35px;
+    padding-bottom: 2.5px;
+    background-color: #222222;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    position: absolute;
+    left: 55px;
+    bottom: 19px;
+    padding-left: 5px;
+
+    border: 1px solid #a978ff;
+    border-radius: 6px;
+  }
+
+  .edit-icon:hover,
+  .delete-icon:hover {
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.1);
+  }
 }

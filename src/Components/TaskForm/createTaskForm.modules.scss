@@ -1,20 +1,16 @@
-* {
-  color: white;
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
+$violet: #7c3aed;
 
 .form-label {
   margin-top: -50px;
   display: inline-block;
+  padding-left: 20px;
 }
 
 .input-text {
   z-index: 1;
   font-size: 16px;
   background-color: #171717;
-  width: 640px;
+  width: 630px;
   height: 54px;
   margin-left: auto;
   margin-right: auto;
@@ -24,7 +20,7 @@
   outline: none;
   padding: 16px;
   cursor: pointer;
-  border: 1px solid #7c3aed;
+  border: 1px solid $violet;
 
   &:placeholder {
     color: #808080;
@@ -43,7 +39,7 @@
   padding-right: 25px;
   outline: none;
   border: none;
-  background-color: #7c3aed;
+  background-color: $violet;
   width: 90px;
   height: 54px;
   cursor: pointer;

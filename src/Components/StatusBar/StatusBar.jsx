@@ -3,17 +3,17 @@ import './statusBar.modules.scss';
 
 export const StatusBar = ({ newTodos, completedTodos }) => {
   return (
-    <div className="status-bar">
-      <div className="status_bar-element">
+    <div className="status">
+      <div className="element">
         <p>New tasks</p>
-        <span className="status_bar-element-circle">
+        <div className="circle">
           <p>{newTodos}</p>
-        </span>
+        </div>
       </div>
 
-      <div className="status_bar-element">
+      <div className="element">
         <p>Completed tasks</p>
-        <div className="status_bar-element-circle">
+        <div className="circle">
           <p>{completedTodos}</p>
         </div>
       </div>

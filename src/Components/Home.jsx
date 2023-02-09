@@ -2,29 +2,15 @@ import React from 'react';
 import { CreateTaskForm } from './TaskForm/CreateTaskForm';
 import logo from '../assets/img/logo.svg';
 import { StatusBar } from './StatusBar/StatusBar';
-import { TodoItem } from './TodoItem/TodoItem';
+import { TodoList } from './TodoList';
 import emptyIcon from '../assets/img/emptyIcon.svg';
-
-const data = [
-  {
-    id: 123,
-    title: 'Create design for project',
-    isCompleted: true,
-  },
-  {
-    id: 124,
-    title: 'Clean house',
-    isCompleted: false,
-  },
-  {
-    id: 125,
-    title: 'Walk with dog',
-    isCompleted: false,
-  },
-];
+import '../App.modules.scss';
+import data from '../data';
 
 export const Home = () => {
-  const [todos, setTodos] = React.useState(data);
+  const saved = () => (localStorage.length !== 0 ? JSON.parse(localStorage.getItem('todos')) : []);
+
+  const [todos, setTodos] = React.useState(saved);
   const [check, setCheck] = React.useState(false);
 
   const changeTodo = (id) => {
@@ -36,6 +22,7 @@ export const Home = () => {
 
   const deleteTodo = (id) => {
     setTodos([...todos].filter((t) => t !== id));
+    localStorage.removeItem(id);
   };
 
   const checkAll = () => {
@@ -52,53 +39,55 @@ export const Home = () => {
 
   const deleteAll = () => {
     setTodos([]);
+    localStorage.clear();
   };
+
+  React.useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   const completedTodos = [...todos].filter((el) => el.isCompleted).length;
   const newTodos = [...todos].filter((el) => !el.isCompleted).length;
 
+  // console.log(todos);
+
   return (
     <div>
-      <header className="bg-[#0D0D0D] h-200 w-full">
-        <img src={logo} className="py-11 ml-auto mr-auto" alt="logo"></img>
+      <header className='header'>
+        <img src={logo} className='header-logo' alt='logo'></img>
       </header>
 
-      <main className="mx-auto w-max">
-        <CreateTaskForm setTodos={setTodos} />
+      <main>
+        <CreateTaskForm todos={todos} setTodos={setTodos} />
         <StatusBar newTodos={newTodos} completedTodos={completedTodos} />
-
-        <div className="tasks h-80 overflow-y-scroll scrollbar-blue-700">
+        <div className='todos-container'>
           {todos.length !== 0 ? (
-            <ul>
-              {todos.map((todo) => (
-                <TodoItem
-                  key={todo.id}
-                  todo={todo}
-                  changeTodo={changeTodo}
-                  deleteTodo={deleteTodo}
-                />
-              ))}
-            </ul>
+            <TodoList
+              todos={todos}
+              setTodos={setTodos}
+              changeTodo={changeTodo}
+              deleteTodo={deleteTodo}
+            />
           ) : (
-            <div>
-              <img className="mx-auto pt-20" alt="empty" src={emptyIcon} />
-              <h1 className="text-center text-zinc-600 pt-5 text-xl">Your task list is empty :(</h1>
+            <div className='empty-list'>
+              <img className='empty-list-img' alt='empty' src={emptyIcon} />
+              <h1 className='empty-list-text'>Your task list is empty :(</h1>
             </div>
           )}
         </div>
 
-        <div className="flex justify-between pt-5 pb-10">
+        <div className='bottom-buttons'>
           {completedTodos === 0 ? (
-            <button className="hover:text-violet-600" onClick={checkAll}>
+            <button className='bottom-buttons-btn' onClick={checkAll}>
               Check all
             </button>
           ) : (
-            <button className="hover:text-violet-600" onClick={unCheckAll}>
+            <button className='bottom-buttons-btn' onClick={unCheckAll}>
               Uncheck all
             </button>
           )}
 
-          <button className="hover:text-violet-600" onClick={deleteAll}>
+          <button className='bottom-buttons-btn' onClick={deleteAll}>
             Delete all
           </button>
         </div>

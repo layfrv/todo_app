@@ -1,0 +1,17 @@
+.check {
+  border: 2px solid #7c3aed;
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+
+  &.bg {
+    background-color: #7c3aed;
+  }
+}
+
+.check-icon {
+  width: 100%;
+  height: 100%;
+  color: #f2ebff;
+}

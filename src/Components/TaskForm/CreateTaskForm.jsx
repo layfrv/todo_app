@@ -1,20 +1,26 @@
 import React, { useEffect } from 'react';
 import './createTaskForm.modules.scss';
 
-export const CreateTaskForm = ({ setTodos }) => {
+export const CreateTaskForm = ({ todos, setTodos }) => {
+  const lastOrder = todos.length !== 0 ? todos[todos.length - 1].order + 1 : 0;
   const [title, setTitle] = React.useState('');
+
+  const [order, setOrder] = React.useState(lastOrder);
 
   const addTodo = (title) => {
     if (title.length !== 0)
       setTodos((prev) => [
+        ...prev,
         {
-          id: Math.random(),
+          id: Math.trunc(Math.random() * 1000),
           title,
           isCompleted: false,
+          order,
         },
-        ...prev,
       ]);
     setTitle('');
+    setOrder((prev) => prev + 1);
+    localStorage.setItem('todos', JSON.stringify(todos));
   };
 
   const onKeyDownHandler = (e) => {
