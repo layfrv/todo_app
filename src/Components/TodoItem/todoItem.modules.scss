@@ -11,78 +11,76 @@
   margin-bottom: 14px;
   border-radius: 8px;
 
-  &-btn {
+  &-check-block {
     display: flex;
-    cursor: pointer;
-    background-color: #222222;
 
-    div:hover {
-      transition: all 0.2s ease-in-out;
-      transform: scale(1.05);
+    &:hover {
+      cursor: pointer;
     }
+  }
 
-    &_p {
-      color: white;
-      font-size: 18px;
-      text-align: left;
-      overflow-y: auto;
-      padding-top: 3px;
-      cursor: default;
+  &-block-p {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    overflow-y: auto;
+    padding-top: 6px;
+    padding-left: 1px;
+    cursor: default;
 
-      &-completed {
-        color: #52525b;
-        text-decoration: line-through;
-      }
+    &-completed {
+      color: #52525b;
+      text-decoration: line-through;
     }
   }
 
   &:hover {
+    display: flex;
     background-color: #262626;
     cursor: grab;
   }
+}
 
-  &-button-items {
-    margin-left: 10px;
-    flex-shrink: 0;
-    background-color: inherit;
+.button-items {
+  margin-left: 10px;
+  flex-shrink: 0;
 
-    .edit-icon,
-    .delete-icon {
-      flex-grow: 1;
-      margin-left: 10px;
-      background-color: #222222;
+  .edit-icon,
+  .delete-icon {
+    flex-grow: 1;
+    margin-left: 5px;
+    background-color: #222222;
 
-      &-svg {
-        color: #7c3aed;
-        margin-left: 5px;
-        font-size: 30px;
+    &-svg {
+      color: #7c3aed;
+      margin-left: 5px;
+      font-size: 30px;
+
+      &:hover {
+        transition: all 0.2s ease-in-out;
+        transform: scale(1.2);
       }
     }
-  }
 
-  .edit-input {
-    color: white;
-    font-size: 20px;
-    box-sizing: border-box;
-    width: 400px;
-    height: 35px;
-    padding-bottom: 2.5px;
-    background-color: #222222;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    outline: none;
-    position: absolute;
-    left: 55px;
-    bottom: 19px;
-    padding-left: 5px;
-
-    border: 1px solid #a978ff;
-    border-radius: 6px;
+    &-hovered {
+      background-color: #262626;
+      margin-left: 5px;
+    }
   }
+}
 
-  .edit-icon:hover,
-  .delete-icon:hover {
-    transition: all 0.2s ease-in-out;
-    transform: scale(1.1);
-  }
+.edit-input {
+  color: white;
+  font-size: 18px;
+  width: 400px;
+  height: 34px;
+  background-color: #222222;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  padding-left: 5px;
+  padding-bottom: 1px;
+  margin-left: -5px;
+  border: 1px solid #a978ff;
+  border-radius: 6px;
 }

@@ -5,7 +5,6 @@ import { StatusBar } from './StatusBar/StatusBar';
 import { TodoList } from './TodoList';
 import emptyIcon from '../assets/img/emptyIcon.svg';
 import '../App.modules.scss';
-import data from '../data';
 
 export const Home = () => {
   const saved = () => (localStorage.length !== 0 ? JSON.parse(localStorage.getItem('todos')) : []);
@@ -53,8 +52,8 @@ export const Home = () => {
 
   return (
     <div>
-      <header className='header'>
-        <img src={logo} className='header-logo' alt='logo'></img>
+      <header>
+        <img src={logo} alt='logo'></img>
       </header>
 
       <main>
@@ -79,16 +78,16 @@ export const Home = () => {
         <div className='bottom-buttons'>
           {completedTodos === 0 ? (
             <button className='bottom-buttons-btn' onClick={checkAll}>
-              Check all
+              <p>Check all</p>
             </button>
           ) : (
             <button className='bottom-buttons-btn' onClick={unCheckAll}>
-              Uncheck all
+              <p>Uncheck all</p>
             </button>
           )}
 
           <button className='bottom-buttons-btn' onClick={deleteAll}>
-            Delete all
+            <p>Delete all</p>
           </button>
         </div>
       </main>

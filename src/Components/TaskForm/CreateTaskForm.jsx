@@ -32,20 +32,20 @@ export const CreateTaskForm = ({ todos, setTodos }) => {
   };
 
   return (
-    <div className="task-form">
-      <label className="form-label">
+    <div className='task-form'>
+      <label className='form-label'>
         <input
-          className="input-text"
+          className='input-text'
           value={title}
           onKeyDown={onKeyDownHandler}
           onChange={(e) => setTitle(e.target.value)}
-          type="text"
-          name="name"
-          placeholder="Create your task"
-          autoComplete="off"
+          type='text'
+          name='name'
+          placeholder='Create your task'
+          autoComplete='off'
         />
-        <button onClick={() => addTodo(title)} className="submit-btn" type="submit">
-          Add
+        <button onClick={() => addTodo(title)} className='submit-btn' type='submit'>
+          <p>Add</p>
         </button>
       </label>
     </div>

@@ -1,11 +1,9 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
-
 * {
   padding: 0px;
   margin: 0px;
   border: none;
+
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 *,
@@ -25,7 +23,20 @@ a:hover {
   background-color: inherit;
 }
 
-/* Common */
+button {
+  font-family: inherit;
+  background-color: inherit;
+}
+
+button:hover {
+  font-family: inherit;
+  background-color: inherit;
+}
+button p {
+  font-family: inherit;
+  background-color: inherit;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
 aside,
 nav,

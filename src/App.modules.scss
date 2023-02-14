@@ -10,19 +10,20 @@ $violet: #7c3aed;
   width: 100%;
   height: 100vh;
   overflow-y: hidden;
+  overflow-x: hidden;
   color: white;
   background-color: #171717;
 }
 
-.header {
+header {
   background-color: #0d0d0d;
   height: 130px;
+  width: 100%;
   margin: 0;
   padding: 0;
+  text-align: center;
 
-  &-logo {
-    margin-right: auto;
-    margin-left: auto;
+  img {
     padding-top: 30px;
   }
 }
@@ -37,10 +38,19 @@ main {
   margin-right: auto;
 }
 
-.empty-list {
+.todos-container {
   margin-left: auto;
   margin-right: auto;
-  padding-top: 40px;
+  height: 330px;
+  overflow-y: scroll;
+  scrollbar-base-color: #171717;
+}
+
+.empty-list {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 50px;
 
   &-img {
     margin-left: auto;
@@ -56,27 +66,31 @@ main {
   }
 }
 
-.todos-container {
-  height: 330px;
-  overflow-y: scroll;
-  scrollbar-base-color: #171717;
-}
-
 .todoList {
   padding: 20px;
 
   li {
     width: 720px;
   }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
 }
 
 .bottom-buttons {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 25px;
 
-  &-btn:hover {
-    color: #7c3aed;
-    transition: 0.3s;
+  p {
+    font-size: 16px;
+    color: #fff;
+
+    &:hover {
+      color: #7c3aed;
+      transition: 0.3s;
+      cursor: pointer;
+    }
   }
 }

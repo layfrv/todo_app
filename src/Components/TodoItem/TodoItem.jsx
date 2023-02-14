@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Check } from '../Check/Check';
 import { TiDelete } from 'react-icons/ti';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { Reorder } from 'framer-motion';
 import './todoItem.modules.scss';
 import cn from 'classnames';
+import { Input } from './Input';
 
 const variants = {
   initial: {
@@ -26,6 +27,7 @@ export const TodoItem = ({ todo, changeTodo, deleteTodo }) => {
     changeTodo(todo.id);
   };
 
+  const [isHovered, setIsHovered] = useState(false);
   const [title, setTitle] = React.useState(todo.title);
 
   const [isEdit, setEdit] = React.useState(false);
@@ -34,7 +36,7 @@ export const TodoItem = ({ todo, changeTodo, deleteTodo }) => {
     setEdit((prev) => !prev);
   };
 
-  const saveTodo = () => {
+  const saveTodo = (title) => {
     todo.title = title;
   };
 
@@ -58,35 +60,37 @@ export const TodoItem = ({ todo, changeTodo, deleteTodo }) => {
         scale: 1.03,
       }}
       {...variants}
-      className='todo-item'>
-      <button className='todo-item-btn'>
+      className='todo-item'
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}>
+      <div className='todo-item-check-block'>
         <div onClick={onClickHandler}>
           <Check isCompleted={todo.isCompleted} />
         </div>
 
         {isEdit ? (
-          <input
-            className='edit-input'
-            type='text'
-            value={title}
-            onKeyDown={onKeyDownHandler}
-            onChange={(e) => setTitle(e.target.value)}
-            autoComplete='off'></input>
+          <Input title={title} setTitle={setTitle} onKeyDownHandler={onKeyDownHandler} />
         ) : (
           <p
-            className={cn('todo-item-btn_p', {
-              'todo-item-btn_p-completed': todo.isCompleted,
+            onDoubleClick={() => editTodo()}
+            className={cn('todo-item-block-p', {
+              'todo-item-block-p-completed': todo.isCompleted,
             })}>
             {todo.title}
           </p>
         )}
-      </button>
-      <div className='todo-item-button-items'>
-        <button className='edit-icon' onClick={() => editTodo()}>
+      </div>
+
+      <div className={'button-items'}>
+        <button
+          className={`${isHovered ? 'edit-icon-hovered' : 'edit-icon'}`}
+          onClick={() => editTodo()}>
           <AiOutlineEdit className='edit-icon-svg' />
         </button>
 
-        <button className='delete-icon' onClick={() => deleteTodo(todo)}>
+        <button
+          className={`${isHovered ? 'delete-icon-hovered' : 'delete-icon'}`}
+          onClick={() => deleteTodo(todo)}>
           <TiDelete className='delete-icon-svg' />
         </button>
       </div>

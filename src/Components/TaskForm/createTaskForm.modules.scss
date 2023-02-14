@@ -1,20 +1,20 @@
 $violet: #7c3aed;
 
 .form-label {
-  margin-top: -50px;
-  display: inline-block;
+  display: flex;
+  margin-top: -25px;
   padding-left: 20px;
+  text-align: center;
 }
 
 .input-text {
-  z-index: 1;
-  font-size: 16px;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 18px;
   background-color: #171717;
-  width: 630px;
-  height: 54px;
-  margin-left: auto;
-  margin-right: auto;
-  border: none;
+  width: 624px;
+  height: 55px;
+
   border-radius: 8px;
   line-height: 1.5;
   outline: none;
@@ -34,30 +34,36 @@ $violet: #7c3aed;
 }
 
 .submit-btn {
-  margin-left: 8px;
   position: relative;
-  padding-right: 25px;
+  color: white;
+  margin-left: 10px;
+  margin-right: 14px;
+  padding-right: 24px;
   outline: none;
-  border: none;
   background-color: $violet;
   width: 90px;
-  height: 54px;
+  height: 55px;
   cursor: pointer;
   font-weight: bold;
   border-radius: 8px;
-  align-items: center;
 
-  &:before {
+  p {
+    padding-left: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  &:after {
     color: #fff;
     content: '';
     background: url(../../assets/img/plus.svg);
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
     position: absolute;
     left: 55px;
-    bottom: 15px;
+    bottom: 20px;
+    background-repeat: no-repeat;
   }
 
   &:hover {
