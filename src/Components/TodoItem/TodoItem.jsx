@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Check } from '../Check/Check';
 import { TiDelete } from 'react-icons/ti';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { Reorder } from 'framer-motion';
-import './todoItem.modules.scss';
+import './todoItem.scss';
 import cn from 'classnames';
 import { Input } from './Input';
 
@@ -34,23 +34,29 @@ export const TodoItem = ({ todo, changeTodo, deleteTodo }) => {
 
   const editTodo = () => {
     setEdit((prev) => !prev);
+    saveTodo(title);
   };
 
-  const saveTodo = (title) => {
+  const saveTodo = () => {
+    setTitle(title);
     todo.title = title;
+    const items = JSON.parse(localStorage.getItem('todos'));
+    const itemId = items.findIndex((el) => el.id === todo.id);
+    items[itemId].title = title;
+    localStorage.setItem('todos', JSON.stringify(items));
   };
 
   const onKeyDownHandler = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      setTitle(e.target.value);
       saveTodo(title);
-      const items = JSON.parse(localStorage.getItem('todos'));
-      const itemId = items.findIndex((el) => el.id === todo.id);
-      items[itemId].title = title;
-      localStorage.setItem('todos', JSON.stringify(items));
       setEdit(false);
     }
+  };
+
+  const onBlur = () => {
+    setEdit((prev) => !prev);
+    saveTodo(title);
   };
 
   return (
@@ -60,16 +66,21 @@ export const TodoItem = ({ todo, changeTodo, deleteTodo }) => {
         scale: 1.03,
       }}
       {...variants}
-      className='todo-item'
+      className="todo-item"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}>
-      <div className='todo-item-check-block'>
+      <div className="todo-item-check-block">
         <div onClick={onClickHandler}>
           <Check isCompleted={todo.isCompleted} />
         </div>
 
         {isEdit ? (
-          <Input title={title} setTitle={setTitle} onKeyDownHandler={onKeyDownHandler} />
+          <Input
+            title={title}
+            setTitle={setTitle}
+            onKeyDownHandler={onKeyDownHandler}
+            onBlur={onBlur}
+          />
         ) : (
           <p
             onDoubleClick={() => editTodo()}
@@ -85,13 +96,13 @@ export const TodoItem = ({ todo, changeTodo, deleteTodo }) => {
         <button
           className={`${isHovered ? 'edit-icon-hovered' : 'edit-icon'}`}
           onClick={() => editTodo()}>
-          <AiOutlineEdit className='edit-icon-svg' />
+          <AiOutlineEdit className="edit-icon-svg" />
         </button>
 
         <button
           className={`${isHovered ? 'delete-icon-hovered' : 'delete-icon'}`}
           onClick={() => deleteTodo(todo)}>
-          <TiDelete className='delete-icon-svg' />
+          <TiDelete className="delete-icon-svg" />
         </button>
       </div>
     </Reorder.Item>

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './createTaskForm.modules.scss';
+import './styles.scss';
 
 export const CreateTaskForm = ({ todos, setTodos }) => {
   const lastOrder = todos.length !== 0 ? todos[todos.length - 1].order + 1 : 0;

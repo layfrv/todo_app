@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.modules.scss';
+import '../App.scss';
 import { Reorder, AnimatePresence } from 'framer-motion';
 import { TodoItem } from './TodoItem/TodoItem';
 

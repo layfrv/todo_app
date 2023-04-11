@@ -12,7 +12,7 @@
   }
 
   .circle {
-    display: block;
+    display: flex;
     margin-left: 10px;
     width: 30px;
     height: 30px;
@@ -20,8 +20,7 @@
     border-radius: 15px;
 
     p {
-      text-align: center;
-      margin-top: 6px;
+      margin: auto;
     }
   }
 }

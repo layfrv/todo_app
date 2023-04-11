@@ -1,5 +1,5 @@
 import React from 'react';
-import './statusBar.modules.scss';
+import './styles.scss';
 
 export const StatusBar = ({ newTodos, completedTodos }) => {
   return (

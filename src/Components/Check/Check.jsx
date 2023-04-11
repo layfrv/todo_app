@@ -1,6 +1,6 @@
 import { BsCheck } from 'react-icons/bs';
 import React from 'react';
-import './check.modules.scss';
+import './styles.scss';
 import cn from 'classnames';
 
 export const Check = ({ isCompleted }) => {

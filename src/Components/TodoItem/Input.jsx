@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 
-export const Input = ({ title, setTitle, onKeyDownHandler }) => {
+export const Input = ({ title, setTitle, onKeyDownHandler, onBlur }) => {
   return (
     <input
-      className='edit-input'
-      type='text'
+      autoFocus
+      onBlur={onBlur}
+      className="edit-input"
+      type="text"
       value={title}
       onKeyDown={onKeyDownHandler}
       onChange={(e) => setTitle(e.target.value)}
-      autoComplete='off'></input>
+      autoComplete="off"></input>
   );
 };

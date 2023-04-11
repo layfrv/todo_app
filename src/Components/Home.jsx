@@ -4,7 +4,7 @@ import logo from '../assets/img/logo.svg';
 import { StatusBar } from './StatusBar/StatusBar';
 import { TodoList } from './TodoList';
 import emptyIcon from '../assets/img/emptyIcon.svg';
-import '../App.modules.scss';
+import '../App.scss';
 
 export const Home = () => {
   const saved = () => (localStorage.length !== 0 ? JSON.parse(localStorage.getItem('todos')) : []);
