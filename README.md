@@ -14,6 +14,5 @@ Frontend study project created with CRA.
 - React
 - Classnames
 - Framer-motion
-- React-Motion
 - SASS
 - React-icons
